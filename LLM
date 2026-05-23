@@ -1,0 +1,303 @@
+cat > /mnt/user-data/outputs/leisure_lekhuleni.html << 'HTMLEOF'
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Leisure Lekhuleni</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lora:ital,wght@0,400;0,500;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--black:#0A0A0A;--offwhite:#F2EDE4;--gold:#D4A847;--warm:#1A1510;--mid:#2E2820;--muted:#8A8070}
+html{scroll-behavior:smooth}
+body{font-family:'Lora',Georgia,serif;background:var(--black);color:var(--offwhite);overflow-x:hidden}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:1.4rem 3.5rem;border-bottom:1px solid transparent;transition:background 0.3s,border-color 0.3s}
+nav.scrolled{background:rgba(10,10,10,0.93);border-color:rgba(212,168,71,0.2)}
+.nav-logo{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:0.12em;color:var(--gold);text-decoration:none}
+.nav-links{display:flex;gap:2.5rem;list-style:none}
+.nav-links a{font-family:'Space Mono',monospace;font-size:0.65rem;letter-spacing:0.18em;color:var(--muted);text-decoration:none;text-transform:uppercase;transition:color 0.2s}
+.nav-links a:hover{color:var(--gold)}
+
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;padding:0 3.5rem 5rem;position:relative;overflow:hidden}
+.hero-photo-bg{position:absolute;inset:0;background-image:url('https://z-p3-scontent.fjnb12-1.fna.fbcdn.net/v/t39.30808-6/648556620_3726842117458048_5910759368431644572_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=110&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeHLBu1HHiuuQfZvIpli212ZiVDrnUB7DTCJUOudQHsNMDaIuJSTqYTLVh9ARx1mF7rhi_eEX261AdgPlN2BbjcH&_nc_ohc=zaEWbopi2IcQ7kNvwH-61OK&_nc_oc=Adpkjz-ZvH--IlWsQY8pAKbkZwid66ApfnX4-n7ob6F5sfSwQVcS57mgiiMEGYvos4w&_nc_zt=23&_nc_ht=z-p3-scontent.fjnb12-1.fna&_nc_gid=8fiMimsu2Qa0hfSiYDorjg&_nc_ss=7b2a8&oh=00_Af7p38I1praR94Fs5vosACH4R2h3-o_H2aeGoJwD1c9dUA&oe=6A17F148');background-size:cover;background-position:center top;filter:brightness(0.32)}
+.hero-lines{position:absolute;inset:0;background-image:repeating-linear-gradient(0deg,transparent,transparent 79px,rgba(212,168,71,0.03) 80px);pointer-events:none}
+.hero-content{position:relative;z-index:2}
+.hero-tag{font-family:'Space Mono',monospace;font-size:0.62rem;letter-spacing:0.3em;color:var(--gold);text-transform:uppercase;margin-bottom:1.5rem}
+.hero-name{font-family:'Bebas Neue',sans-serif;font-size:clamp(4.5rem,12vw,10rem);line-height:0.88;letter-spacing:0.04em;color:var(--offwhite)}
+.hero-name .surname{color:var(--gold)}
+.hero-roles{display:flex;flex-wrap:wrap;gap:0.6rem;margin-top:2rem}
+.role-pill{font-family:'Space Mono',monospace;font-size:0.6rem;letter-spacing:0.14em;text-transform:uppercase;padding:0.35rem 0.9rem;border:1px solid rgba(212,168,71,0.4);color:rgba(242,237,228,0.7);border-radius:2rem;transition:all 0.2s}
+.role-pill:hover{border-color:var(--gold);color:var(--gold)}
+.hero-scroll{position:absolute;right:3.5rem;bottom:5rem;z-index:2;font-family:'Space Mono',monospace;font-size:0.58rem;letter-spacing:0.2em;color:rgba(212,168,71,0.4);text-transform:uppercase;writing-mode:vertical-rl;display:flex;align-items:center;gap:0.75rem}
+.hero-scroll::after{content:'';display:block;width:1px;height:60px;background:rgba(212,168,71,0.25)}
+
+.pillars{background:var(--black);padding:5rem 3.5rem;border-bottom:1px solid rgba(212,168,71,0.1)}
+.pillars-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(212,168,71,0.12)}
+.pillar{background:var(--black);padding:3rem 3rem;position:relative;overflow:hidden}
+.pillar-role{font-family:'Space Mono',monospace;font-size:0.6rem;letter-spacing:0.22em;color:var(--gold);text-transform:uppercase;margin-bottom:1rem}
+.pillar-title{font-family:'Bebas Neue',sans-serif;font-size:2.4rem;letter-spacing:0.05em;color:var(--offwhite);line-height:1.05;margin-bottom:1rem}
+.pillar-title span{color:var(--gold)}
+.pillar-desc{font-size:0.92rem;line-height:1.75;color:var(--muted);font-style:italic}
+.pillar-num{position:absolute;top:2rem;right:2.5rem;font-family:'Bebas Neue',sans-serif;font-size:5rem;color:rgba(212,168,71,0.05);line-height:1;pointer-events:none;user-select:none}
+
+.what{background:var(--warm);padding:7rem 3.5rem}
+.section-label{font-family:'Space Mono',monospace;font-size:0.62rem;letter-spacing:0.25em;color:var(--gold);text-transform:uppercase;margin-bottom:3.5rem;display:flex;align-items:center;gap:1.5rem}
+.section-label::before{content:'//'}
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:0;border:1px solid rgba(212,168,71,0.12)}
+.service-card{padding:2.5rem 2rem;border:1px solid rgba(212,168,71,0.12);transition:background 0.3s;cursor:default}
+.service-card:hover{background:rgba(212,168,71,0.05)}
+.service-num{font-family:'Space Mono',monospace;font-size:0.62rem;letter-spacing:0.14em;color:rgba(212,168,71,0.35);margin-bottom:1.2rem}
+.service-title{font-family:'Bebas Neue',sans-serif;font-size:1.65rem;letter-spacing:0.06em;color:var(--offwhite);margin-bottom:0.75rem;line-height:1.1}
+.service-desc{font-size:0.88rem;line-height:1.7;color:var(--muted);font-style:italic}
+
+.bio{display:grid;grid-template-columns:1fr 1fr;min-height:70vh}
+.bio-visual{position:relative;overflow:hidden;background:var(--mid)}
+.bio-photo{width:100%;height:100%;object-fit:cover;object-position:center top;display:block;filter:contrast(1.05) brightness(0.92)}
+.bio-photo-overlay{position:absolute;inset:0;background:linear-gradient(to right,transparent 60%,rgba(10,10,10,0.4) 100%)}
+.bio-badge{position:absolute;bottom:2.5rem;left:2.5rem;font-family:'Space Mono',monospace;font-size:0.58rem;letter-spacing:0.15em;color:var(--gold);text-transform:uppercase;border:1px solid rgba(212,168,71,0.3);padding:0.5rem 1rem}
+.bio-text{padding:6rem 4rem;background:var(--black);display:flex;flex-direction:column;justify-content:center}
+.bio-text h2{font-family:'Bebas Neue',sans-serif;font-size:3rem;letter-spacing:0.06em;color:var(--offwhite);line-height:1.1;margin-bottom:2rem}
+.bio-text h2 span{color:var(--gold)}
+.bio-text p{font-size:1rem;line-height:1.85;color:var(--muted);margin-bottom:1rem}
+.bio-divider{width:40px;height:1px;background:var(--gold);margin:1.75rem 0}
+
+.work{padding:7rem 3.5rem;background:var(--warm)}
+.work-list{display:flex;flex-direction:column}
+.work-item{display:grid;grid-template-columns:80px 1fr auto;align-items:center;gap:2rem;padding:1.75rem 0;border-bottom:1px solid rgba(212,168,71,0.1);cursor:default;transition:all 0.2s}
+.work-item:first-child{border-top:1px solid rgba(212,168,71,0.1)}
+.work-item:hover{background:rgba(212,168,71,0.04);padding-left:0.75rem;padding-right:0.75rem;border-radius:4px}
+.work-yr{font-family:'Space Mono',monospace;font-size:0.65rem;letter-spacing:0.1em;color:rgba(212,168,71,0.4)}
+.work-title-row{font-family:'Lora',serif;font-size:1.1rem;font-weight:500;color:var(--offwhite);margin-bottom:0.3rem}
+.work-subtitle{font-family:'Space Mono',monospace;font-size:0.58rem;letter-spacing:0.14em;color:var(--muted);text-transform:uppercase}
+.work-tag{font-family:'Space Mono',monospace;font-size:0.55rem;letter-spacing:0.12em;text-transform:uppercase;padding:0.25rem 0.7rem;border-radius:2rem}
+.tag-pr{border:1px solid rgba(192,57,43,0.5);color:#C0392B}
+.tag-music{border:1px solid rgba(212,168,71,0.4);color:var(--gold)}
+.tag-tech{border:1px solid rgba(46,204,113,0.3);color:#27ae60}
+.tag-event{border:1px solid rgba(142,68,173,0.4);color:#8e44ad}
+.tag-gospel{border:1px solid rgba(212,168,71,0.6);color:#D4A847}
+
+.contact{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid rgba(212,168,71,0.15)}
+.contact-left{padding:7rem 4rem;background:var(--black);display:flex;flex-direction:column;justify-content:center}
+.contact-left h2{font-family:'Bebas Neue',sans-serif;font-size:3.5rem;letter-spacing:0.05em;color:var(--offwhite);line-height:1.0;margin-bottom:1.5rem}
+.contact-left h2 em{color:var(--gold);font-style:normal}
+.contact-left p{font-size:0.95rem;line-height:1.7;color:var(--muted);font-style:italic;max-width:300px}
+.contact-right{padding:7rem 4rem;background:var(--mid);display:flex;flex-direction:column;justify-content:center}
+.contact-row{display:flex;align-items:center;gap:1rem;padding:1.5rem 0;border-bottom:1px solid rgba(212,168,71,0.1);text-decoration:none;transition:color 0.2s}
+.contact-row:first-child{border-top:1px solid rgba(212,168,71,0.1)}
+.contact-row:hover .contact-row-label{color:var(--gold)}
+.contact-row-icon{width:36px;height:36px;border:1px solid rgba(212,168,71,0.2);display:flex;align-items:center;justify-content:center;border-radius:50%;font-size:0.9rem;color:var(--gold);flex-shrink:0}
+.contact-row-label{font-family:'Space Mono',monospace;font-size:0.65rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);transition:color 0.2s}
+
+footer{background:var(--black);padding:2rem 3.5rem;display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(212,168,71,0.1);font-family:'Space Mono',monospace;font-size:0.58rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(212,168,71,0.25)}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.hero-tag{animation:fadeUp 0.7s ease both 0.15s}
+.hero-name{animation:fadeUp 0.7s ease both 0.3s}
+.hero-roles{animation:fadeUp 0.7s ease both 0.5s}
+
+@media(max-width:768px){
+  nav{padding:1rem 1.5rem}
+  .hero{padding:0 1.5rem 4rem}
+  .hero-scroll{display:none}
+  .pillars{padding:4rem 1.5rem}
+  .pillars-grid{grid-template-columns:1fr}
+  .what{padding:5rem 1.5rem}
+  .bio{grid-template-columns:1fr}
+  .bio-visual{height:420px}
+  .bio-text{padding:4rem 1.5rem}
+  .work{padding:5rem 1.5rem}
+  .work-item{grid-template-columns:60px 1fr;gap:1rem}
+  .work-tag{display:none}
+  .contact{grid-template-columns:1fr}
+  .contact-left,.contact-right{padding:4rem 1.5rem}
+  footer{flex-direction:column;gap:0.5rem;text-align:center;padding:1.5rem}
+}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <a class="nav-logo" href="#">Leisure Lekhuleni</a>
+  <ul class="nav-links">
+    <li><a href="#ventures">Ventures</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#work">Work</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-photo-bg"></div>
+  <div class="hero-lines"></div>
+  <div class="hero-content">
+    <div class="hero-tag">// Entrepreneur · Creative · Gospel · South Africa</div>
+    <h1 class="hero-name">LEISURE<br><span class="surname">LEKHULENI</span></h1>
+    <div class="hero-roles">
+      <span class="role-pill">CEO — Isure Events</span>
+      <span class="role-pill">Founder — Awesome Praise Psalmody</span>
+      <span class="role-pill">PR &amp; Marketing Manager</span>
+      <span class="role-pill">Songwriter &amp; Arranger</span>
+      <span class="role-pill">Sound Technician</span>
+      <span class="role-pill">Event Producer</span>
+      <span class="role-pill">Musician</span>
+    </div>
+  </div>
+  <div class="hero-scroll">Scroll</div>
+</section>
+
+<section class="pillars" id="ventures">
+  <div class="pillars-grid">
+    <div class="pillar">
+      <div class="pillar-num">01</div>
+      <div class="pillar-role">CEO &amp; Founder</div>
+      <div class="pillar-title">Isure <span>Events</span></div>
+      <div class="pillar-desc">A full-service event production company delivering world-class concerts, corporate shows, and branded experiences across South Africa. From concept to curtain call — Isure makes it happen.</div>
+    </div>
+    <div class="pillar">
+      <div class="pillar-num">02</div>
+      <div class="pillar-role">Founder &amp; Leader</div>
+      <div class="pillar-title">Awesome Praise <span>Psalmody</span></div>
+      <div class="pillar-desc">A gospel team built on the foundation of worship, excellence, and spirit-led music. Awesome Praise Psalmody exists to uplift communities and glorify God through the power of song.</div>
+    </div>
+  </div>
+</section>
+
+<section class="what" id="services">
+  <div class="section-label">What I do</div>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-num">01</div>
+      <div class="service-title">PR &amp; Marketing</div>
+      <div class="service-desc">Brand storytelling, campaign strategy, and media relations that move people and build lasting presence.</div>
+    </div>
+    <div class="service-card">
+      <div class="service-num">02</div>
+      <div class="service-title">Songwriting &amp; Arrangement</div>
+      <div class="service-desc">Crafting melodies, lyrics, and full arrangements — from concept to final score, across gospel and beyond.</div>
+    </div>
+    <div class="service-card">
+      <div class="service-num">03</div>
+      <div class="service-title">Sound Engineering</div>
+      <div class="service-desc">Live sound design, studio mixing, and audio production with an ear trained on detail and impact.</div>
+    </div>
+    <div class="service-card">
+      <div class="service-num">04</div>
+      <div class="service-title">Event Production</div>
+      <div class="service-desc">End-to-end production of concerts, showcases, and branded experiences — powered by Isure Events.</div>
+    </div>
+    <div class="service-card">
+      <div class="service-num">05</div>
+      <div class="service-title">Live Performance</div>
+      <div class="service-desc">A versatile musician and worship leader whose stage presence and musicality bring energy to every performance.</div>
+    </div>
+  </div>
+</section>
+
+<section class="bio" id="about">
+  <div class="bio-visual">
+    <img class="bio-photo"
+      src="https://z-p3-scontent.fjnb12-1.fna.fbcdn.net/v/t39.30808-6/649078239_3724259057716354_1889982238593592813_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=cc71e4&_nc_eui2=AeHMt-XLR_ewI7lH5oMf_qEYSBJGTYQLdNtIEkZNhAt026213zPMfPJiW82HdEDraV-FeqtHDxiQQTIiNJNg4JnO&_nc_ohc=YtKv6UNeo10Q7kNvwH-61OK&_nc_oc=AdrF--sTcO3ehyI3TKv4Cd9JlAp_snuXsE0bR1F4G8zMOs6UtOno1ps0j1BFStfoO2s&_nc_zt=23&_nc_ht=z-p3-scontent.fjnb12-1.fna&_nc_gid=X1yUcZ3Cam2ZZk2xGX9rWQ&_nc_ss=7b2a8&oh=00_Af7tKxZAeRdXLTXNrSezYqyvek7_mONGLbIX2Y7fDNzZCw&oe=6A17D422"
+      alt="Leisure Lekhuleni"
+    />
+    <div class="bio-photo-overlay"></div>
+    <div class="bio-badge">Leisure Lekhuleni KaMandlazi</div>
+  </div>
+  <div class="bio-text">
+    <h2>Where <span>faith, sound</span> &amp; strategy meet.</h2>
+    <p>Leisure Lekhuleni KaMandlazi is a South African entrepreneur, musician, and creative powerhouse. As CEO of Isure Events and Founder of the gospel team Awesome Praise Psalmody, Leisure operates at the intersection of business, ministry, and music.</p>
+    <div class="bio-divider"></div>
+    <p>With expertise spanning PR &amp; marketing, sound engineering, songwriting, and live event production, Leisure brings a rare combination of technical mastery, spiritual depth, and executive vision to everything he touches.</p>
+  </div>
+</section>
+
+<section class="work" id="work">
+  <div class="section-label">Selected Projects</div>
+  <div class="work-list">
+    <div class="work-item">
+      <div class="work-yr">2024</div>
+      <div class="work-info">
+        <div class="work-title-row">Isure Events — Live Concert Series</div>
+        <div class="work-subtitle">Event Production · Full Show Management</div>
+      </div>
+      <span class="work-tag tag-event">Event</span>
+    </div>
+    <div class="work-item">
+      <div class="work-yr">2024</div>
+      <div class="work-info">
+        <div class="work-title-row">Awesome Praise Psalmody — Gospel Recording</div>
+        <div class="work-subtitle">Songwriter · Arranger · Producer</div>
+      </div>
+      <span class="work-tag tag-gospel">Gospel</span>
+    </div>
+    <div class="work-item">
+      <div class="work-yr">2023</div>
+      <div class="work-info">
+        <div class="work-title-row">Brand Launch Campaign</div>
+        <div class="work-subtitle">PR Strategy · Content · Media Relations</div>
+      </div>
+      <span class="work-tag tag-pr">PR</span>
+    </div>
+    <div class="work-item">
+      <div class="work-yr">2023</div>
+      <div class="work-info">
+        <div class="work-title-row">Festival Sound Design — Johannesburg</div>
+        <div class="work-subtitle">FOH Engineering · Monitor Mix</div>
+      </div>
+      <span class="work-tag tag-tech">Tech</span>
+    </div>
+    <div class="work-item">
+      <div class="work-yr">2022</div>
+      <div class="work-info">
+        <div class="work-title-row">Artist PR &amp; Marketing Campaign</div>
+        <div class="work-subtitle">Strategy · Press · Digital</div>
+      </div>
+      <span class="work-tag tag-pr">PR</span>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="contact-left">
+    <h2>Let's build<br>something <em>loud.</em></h2>
+    <p>Open to collaborations, event productions, gospel projects, and conversations about music, ministry, and marketing.</p>
+  </div>
+  <div class="contact-right">
+    <a href="mailto:hello@leisurelekhuleni.com" class="contact-row">
+      <div class="contact-row-icon">✉</div>
+      <span class="contact-row-label">hello@leisurelekhuleni.com</span>
+    </a>
+    <a href="https://web.facebook.com/leisure.lekhuleni.5" class="contact-row">
+      <div class="contact-row-icon">f</div>
+      <span class="contact-row-label">Facebook — Leisure Lekhuleni KaMandlazi</span>
+    </a>
+    <a href="#" class="contact-row">
+      <div class="contact-row-icon">◎</div>
+      <span class="contact-row-label">Instagram</span>
+    </a>
+    <a href="#" class="contact-row">
+      <div class="contact-row-icon">◉</div>
+      <span class="contact-row-label">Download Press Kit</span>
+    </a>
+  </div>
+</section>
+
+<footer>
+  <span>© 2026 Leisure Lekhuleni</span>
+  <span>CEO — Isure Events · Founder — Awesome Praise Psalmody</span>
+  <span>South Africa</span>
+</footer>
+
+<script>
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>40)});
+</script>
+</body>
+</html>
+HTMLEOF
+echo "Done"
+Output
+
+Done
+Done
